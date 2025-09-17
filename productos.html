@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="miTienda" />
+
+    <style>
+        @keyframes agrandarImagen {
+            from {transform: scale(1);}
+            to {transform: scale(1.5);}       
+        }
+
+        .productos {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .productos img:hover{
+            animation: agrandarImagen 0.5s ease-in forwards;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .productos img {
+            height: auto;
+            width: 200px;
+            margin-left: 10px;
+        }
+
+        @keyframes girar{
+            from{transform: rotate(0deg);}
+            to{transform: rotate(360deg);}
+        }
+
+        .loader {
+            animation: girar 1s linear infinite;
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 50%;
+            border-top: grey;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+             <a href="index.html">
+                <img 
+                src="/assets/images/4GFYMYJE5ZDWXGOEOYWI7XSIAQ.avif"
+                width="42" height="42"
+                alt="Logo"
+                >
+            </a>
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="contactos.html">Contacto</a>
+            <a href="/pages/registro.html">Registrarse</a>
+            <!--Ejemplo de imagen que redirecciona a la pagina carrito-->
+            <a href="/pages/carrito.html">
+                <img
+                    src="/assets/images/carrito.png"
+                    width="42" height="42" 
+                    alt="Carrito" 
+                >   
+            </a>
+        </nav>
+    </header>
+
+    <aside>
+
+    </aside>
+
+    <main>
+        <div class="loader"></div>
+
+        <section class="productos-grid">
+            <article class="productos">
+                <img src="imagenes/descargar - 2025-09-16T002243.827.jpeg" alt="Campera de jean">
+            </article>
+
+            <article class="productos">
+                
+            </article>
+
+            <article class="productos">
+                
+            </article>
+
+            <article class="productos">
+                
+            </article>
+
+            <article class="productos">
+                
+            </article>
+
+            <article class="productos">
+                
+            </article>
+        </section>
+
+        <section>
+            <input type="text" id="buscador" placeholder="Buscar producto...">
+
+            <div id="recomendados"></div>
+        </section>
+
+        <script>
+            const input = document.getElementById("buscador");
+            const recomendados = document.getElementById("recomendados");
+
+            const productos= [ //array con los productos
+                "Remera lisa negra",
+                "Remera lisa beige",
+                "Remera lisa blanca",
+                "Bermuda baggy",
+                "Remera baggy gris",
+                "Jean baggy gris"
+            ]
+
+            input.addEventListener ("input", () =>{
+                const texto = input.value.toLowerCase();
+                recomendados.innerHTML=""; //limpia la consola
+
+                const filtrados = productos.filter (prod => //filtra los productos, recorre cada elemento con prod
+                    prod.toLowerCase().includes(texto) //texto indica el nombre del producto en minusculas con tolowercase
+                ); //filtrados es un array con los productos filtrados, solo aparecen los que cumplen la condicion (includes(text))
+
+                filtrados.forEach(prod => { //for each con prod solo recorre lo que ya fue filtrado para mostrarlo en pantalla
+                    const div = document.createElement("div"); //crea un div
+                    div.textContent = prod; //le agrega texto (prod)
+                    div.classList.add("producto"); //le agrega la clase producto
+                    recomendados.appendChild(div); //agrega el div al html en contenedor
+                })
+
+                if(filtrados.length === 0 && texto !== "") { //filtrados.length mide cuantos elementos coinciden en el array filtrados
+                    recomendados.textContent = "No se encontraron resultados para la busqueda.";
+                } 
+            })
+        </script>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>

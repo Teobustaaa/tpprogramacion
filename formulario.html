@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="miTienda" />
+</head>
+
+<body>
+    <header>
+        <nav>
+             <a href="index.html">
+                <img 
+                src="/assets/images/4GFYMYJE5ZDWXGOEOYWI7XSIAQ.avif"
+                width="42" height="42"
+                alt="Logo"
+                >
+            </a>
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="contactos.html">Contacto</a>
+            <a href="/pages/registro.html">Registrarse</a>
+            <!--Ejemplo de imagen que redirecciona a la pagina carrito-->
+            <a href="/pages/carrito.html">
+                <img
+                    src="/assets/images/carrito.png"
+                    width="42" height="42" 
+                    alt="Carrito" 
+                >   
+            </a>
+        </nav>
+    </header>
+
+    <aside>
+
+    </aside>
+
+    <main>
+        <section class="contacto">
+            <form id="formulario">
+                <label for="nombreContacto">Nombre: </label>
+                <input type="text" name="nombreContacto" id="nombreContacto" required>
+                <span id="mensaje-nombre" class="error"></span>
+
+                <label for="mail">Email: </label>
+                <input type="email" name="mail" id="mail" required>
+                <span id="mensaje-email" class="error"></span>
+
+                <label for="telefono">Numero de telefono: </label>
+                <input type="tel" name="telefono" id="telefono" required>
+                <span id="mensaje-telefono" class="error"></span>
+
+                <label for="mensaje">Mensaje: </label>
+                <textarea name="mensaje" id="mensaje" rows="10" cols="40"></textarea>
+                <span id="mensaje-mensaje" class="error"></span>
+                
+                <label><input type="checkbox" id="acepto" name="acepto" required>Acepto que me contacten</label>
+                <span id="mensaje-check" class="error"></span>
+
+                <button type="submit" value="Enviar">Enviar</button>
+            </form>
+
+            <script>
+                const nombreInput = document.getElementById("nombreContacto");
+                const mensajeNombre = document.getElementById("mensaje-nombre");
+
+                nombreInput.addEventListener("input", () => {
+                        if(nombreInput.value.length < 3) {
+                            mensajeNombre.textContent = "El nombre debe tener al menos 3 letras";
+                            mensajeNombre.style.color = "red";
+                        } else {
+                            mensajeNombre.textContent = "Nombre válido";
+                            mensajeNombre.style.color = "green";
+                        }
+                    }
+                );
+
+                const correoEmail = document.getElementById("mail");
+                const mensajeEmail = document.getElementById("mensaje-email");
+
+                correoEmail.addEventListener("input", () => {
+                    if(correoEmail.value.includes("@") === false) {
+                        mensajeEmail.textContent = "El email debe contener @";
+                        mensajeEmail.style.color = "red";
+                    } else {
+                        mensajeEmail.textContent = "Email valido";
+                        mensajeEmail.style.color = "green";
+                    }
+                });
+
+                const telefonoInput = document.getElementById("telefono");
+                const mensajeTelefono = document.getElementById("mensaje-telefono");
+
+                telefonoInput.addEventListener("input", () =>{
+                    if(telefonoInput.value.length < 6) {
+                        mensajeTelefono.textContent = "Numero de telefono invalido";
+                        mensajeTelefono.style.color = "red";
+                    } else {
+                        mensajeTelefono.textContent = "Numero de telefono valido";
+                        mensajeTelefono.style.color = "green";
+                    }
+
+                })
+
+                const mensajeInput = document.getElementById("mensaje");
+                const mensajeMensaje = document.getElementById("mensaje-mensaje");
+
+                mensajeInput.addEventListener("input", () =>{
+                    if(mensajeInput.value.trim().length < 5) {
+                        mensajeMensaje.textContent = "El mensaje debe contener mas de 5 caracteres";
+                        mensajeMensaje.style.color = "red";
+                    } else {
+                        mensajeMensaje.textContent = "Mensaje valido";
+                        mensajeMensaje.style.color = "green";
+                    }
+                })
+
+                const checkInput = document.getElementById("acepto");
+                const checkMensaje = document.getElementById("mensaje-check");
+
+                checkInput.addEventListener("change", () => {
+                    if(checkInput.checked === false) {
+                        checkMensaje.textContent = "Debes aceptar que te contacten.";
+                        checkMensaje.style.color = "red";
+                    } else {
+                        checkMensaje.textContent = "Aceptado";
+                        checkMensaje.style.color = "green";
+                    }
+                } )
+
+
+                formulario.addEventListener("submit", async (e) => { //async: función que puede esperar cosas que tardan en completarse (submit con fetch)
+                    e.preventDefault(); //Evita que se recargue la pagina
+
+                    const datos = {
+                        nombre: nombreInput.value,
+                        email: correoEmail.value,
+                        telefono: telefonoInput.value,
+                        mensaje: mensajeInput.value
+                    };
+
+                    try { //si falla try, se capta el error con catch
+                        const res = await fetch("https://jsonplaceholder.typicode.com/posts", { //await: espera a que la API responda antes de continuar; se define una constante de respuesta donde se guarda la respuesta del servidor (si estan "bien" o "mal" los datos enviados)
+                            method: "POST", //enviamos datos al servidor (mock API)
+                            headers: { "Content-Type": "application/json" }, //los headers son informacion adicional para que el servidor pueda interpretar la informacion (enviamos info en formato json en este caso)
+                            body: JSON.stringify(datos) //el contenido que enviamos al servidor (datos en formato json)
+                        });
+
+                        const data = await res.json(); //await res.json lee el cuerpo de la respuesta (que viene en JSON) y lo convierte en un objeto js, para que data(objeto) pueda acceder a sus propiedades (data.nombre, data.email etc)
+                        alert("Formulario enviado: " + JSON.stringify(data)); //se pasa a data como string porque alert muestra texto, y se envia el formulario a un mock
+
+                    } catch (error) { //recibe la info sobre lo que salio mal 
+                        alert("Error al enviar: " + error);
+                    }
+                });
+            </script>
+
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
