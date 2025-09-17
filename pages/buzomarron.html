@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Remera negra</title>
+     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-          <!-- Header y Navegación -->
-  <header>
+    <header>
 <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-custom">
   <div class="container-fluid">
     <a class="navbar-brand" href="/index.html">UTN CLOTHING</a>
@@ -37,7 +36,8 @@
         </li>
       </ul>
 
-      <!-- Carrito con dropdown -->
+      <!-- Carrito -->
+<!-- Carrito con dropdown -->
 <ul class="navbar-nav">
   <li class="nav-item dropdown">
     <a class="nav-link position-relative dropdown-toggle" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,110 +55,52 @@
     </ul>
   </li>
 </ul>
+
 </nav>
-<section class="container my-5">
+  </header>
 
-      <div class="row" id="contenedor">
-        <article class="col-md-4">
-          <div class="card">
-            <a href="/pages/remeranegra.html"><img src="/assets/images/remeranegra.png" class="card-img-top" alt="Remera negra"></a>
-            <div class="card-body">
-              <h4 class="card-title">Remera lisa negra</h4>
-              <p class="card-text price">$10.000</p>
-            </div>
-          </div>
-        </article>
+<!-- PRODUCTO -->
 
-        <article class="col-md-4">
-          <div class="card">
-            <a href="/pages/remerabeige.html"><img src="/assets/images/remerabeige.jpg" class="card-img-top" alt="Remera beige"></a>
-            <div class="card-body">
-              <h4 class="card-title">Remera lisa beige</h4>
-              <p class="card-text price">$10.000</p>
-            </div>
-          </div>
-        </article>
+<div class="row align-items-start">
+  <!-- Imagen -->
+  <div class="col-md-4 imagen-producto">
+    <img src="/assets/images/buzomarron.png" class="img-fluid producto-img" alt="Remera negra">
+  </div>
 
-        <article class="col-md-4">
-          <div class="card">
-            <a href="/pages/remerablanca.html"><img src="/assets/images/remerablanca.jpg" class="card-img-top" alt="Remera blanca"></a>
-            <div class="card-body">
-              <h4 class="card-title">Remera lisa blanca</h4>
-              <p class="card-text price">$10.000</p>
-            </div>
-          </div>
-        </article>
+  <!-- Info -->
+  <div class="col-md-8 size-productos producto">
+    <h3 class="titulo">Buzo marron</h3>
+    <h5 class="precio">$15.000</h5>
+    <br>
+    <h6>Descripción del producto</h6>
+    • Buzo confeccionado en color marron <br>
+    • 100% algodon <br>
+    • Corte oversize <br>
+    • Industria argentina
+    
+    <div>
+  
+    <br><label for="talle" class="form-label">Talle</label>
+    <select name="talle" class="form-select mb-3 info-productos">
+      <option value="" disabled selected>Seleccionar talle</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+    </select>
 
-        <article class="col-md-4">
-          <div class="card">
-            <a href="/pages/bermudabaggy.html"><img src="/assets/images/bermudajean.png" class="card-img-top" alt="Remera negra logo"></a>
-            <div class="card-body">
-              <h4 class="card-title">Bermuda celeste</h4>
-              <p class="card-text price">$20.000</p>
-            </div>
-          </div>
-        </article>
+    </div>
+  <br>
+    <div>
+  <label for="cantidad" class="form-label">Cantidad</label>
+    <input type="number" min="1" class="form-control mb-3 input-cantidad info-productos">
+    </div>
+    <br>
 
-        <article class="col-md-4">
-          <div class="card">
-            <a href="/pages/bermudabaggygris.html"><img src="/assets/images/bermudagris.jpg" class="card-img-top" alt="Remera negra logo"></a>
-            <div class="card-body">
-              <h4 class="card-title">Bermuda gris</h4>
-              <p class="card-text price">$20.000</p>
-            </div>
-          </div>
-        </article>
+    <button class="btn btn-primary btn-add-cart anadir-carrito">Añadir al carrito</button>
+  </div>
+</div>
 
-          <article class="col-md-4">
-          <div class="card">
-            <a href="/pages/jeangris.html"><img src="/assets/images/jeangris.jpg" class="card-img-top" alt="Remera negra logo"></a>
-            <div class="card-body">
-              <h4 class="card-title">Jean baggy gris</h4>
-              <p class="card-text price">$25.000</p>
-            </div>
-          </div>
-          </article>
-
-          <article class="col-md-4">
-          <div class="card">
-            <a href="/pages/buzonegro.html"><img src="/assets/images/buzonegro.png" class="card-img-top" alt="Remera negra logo"></a>
-            <div class="card-body">
-              <h4 class="card-title">Buzo Negro</h4>
-              <p class="card-text price">$15.000</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="col-md-4">
-          <div class="card">
-            <a href="/pages/buzomarron.html"><img src="/assets/images/buzomarron.png" class="card-img-top" alt="Remera negra logo"></a>
-            <div class="card-body">
-              <h4 class="card-title">Buzo Marron</h4>
-              <p class="card-text price">$15.000</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="col-md-4">
-          <div class="card">
-            <a href="/pages/bermudabaggygris.html"><img src="/assets/images/buzoblanco.jpg" class="card-img-top" alt="Remera negra logo"></a>
-            <div class="card-body">
-              <h4 class="card-title">Buzo Blanco</h4>
-              <p class="card-text price">$15.000</p>
-            </div>
-          </div>
-        </article>
-
-
-
-
-
-
-        </div>
-
-    </section> 
-
-<footer class="bg-light text-center">
+  <footer class="bg-light text-center">
     <div class="container p-4">
 
       <!-- Redes sociales -->
@@ -216,8 +158,11 @@
       <span class="text-dark">UTN CLOTHING</span>
     </div>
   </footer>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="../js/cart.js"></script>
+
 </body>
 </html>
