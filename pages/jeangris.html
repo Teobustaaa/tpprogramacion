@@ -3,42 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remera beige</title>
+    <title>Remera negra</title>
      <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
     <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/index.html">UTN CLOTHING</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
-            </li>
-            <li></li>
-            <li class="nav-item">
-              <a class="nav-link" href="/pages/productos.html">Productos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/pages/ofertas.html">Ofertas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/pages/acercade.html">Acerca de</a>
-            </li>
-          </ul>       
-    </div>
-  </div>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-dark-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/index.html">UTN CLOTHING</a>
+
+    <!-- Botón hamburguesa -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pages/productos.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pages/ofertas.html">Ofertas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pages/acercade.html">Acerca de</a>
+        </li>
+      </ul>
+
+      <!-- Carrito -->
+<!-- Carrito con dropdown -->
+<ul class="navbar-nav">
+  <li class="nav-item dropdown">
+    <a class="nav-link position-relative dropdown-toggle" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      🛒 Carrito
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="cartDropdown" style="min-width: 300px;">
+      <div id="cart-items">
+        <p class="text-center m-0">Tu carrito está vacío</p>
       </div>
-    </nav>
+      <hr class="dropdown-divider">
+      <div id="cart-total" class="mb-2 text-end fw-bold"></div>
+      <button class="btn btn-primary w-100" id="checkout-btn">Finalizar compra</button>
+    </ul>
+  </li>
+</ul>
+
+</nav>
   </header>
 
 <!-- PRODUCTO -->
@@ -46,13 +64,13 @@
 <div class="row align-items-start">
   <!-- Imagen -->
   <div class="col-md-4 imagen-producto">
-    <img src="/assets/images/jeangris.jpg" class="img-fluid" alt="Remera beige">
+    <img src="/assets/images/jeangris.jpg" class="img-fluid producto-img" alt="Remera negra">
   </div>
 
   <!-- Info -->
-  <div class="col-md-8 size-productos">
-    <h3>Jean gris</h3>
-    <h5>$20.000</h5>
+  <div class="col-md-8 size-productos producto">
+    <h3 class="titulo">Jean gris</h3>
+    <h5 class="precio">$35.000</h5>
     <br>
     <h6>Descripción del producto</h6>
     • Pantalon denim <br>
@@ -143,6 +161,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/js/cart.js"></script>
+  <script src="../js/cart.js"></script>
+
 </body>
 </html>

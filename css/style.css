@@ -1,13 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body{
+    padding-top: 80px;
+}
 
+.header{
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15%;
+    height: 70px;
+    top: 0;
+    position: fixed;
+    width: 100%;
+}
 
 .navbar-brand{
-
 
  font-family: Arial, Helvetica, sans-serif;
 
 }
 
+.navbar-dark-custom{
+
+    background-color: rgb(29, 27, 27) !important;
+}
+
+.carrito{
+
+
+}
 
 
 .container-items{
@@ -124,4 +150,21 @@ background-color:black;
     font-size: 20px;
         display: grid;
     text-align: center;
+}
+
+#cart-count {
+  font-size: 0.75rem;
+}
+
+#cart-items img {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
