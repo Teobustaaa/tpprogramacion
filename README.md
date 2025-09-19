@@ -1,7 +1,7 @@
-<img width="1000" height="250" alt="UTN" src="https://github.com/user-attachments/assets/eaf4bc5f-346e-4171-9013-54aef40f4cbc" />
+<img width="1000" height="250" alt="UTN (1)" src="https://github.com/user-attachments/assets/22cfdcd5-c685-4efa-ac46-797ad183aca8" />
 
-# ¿Qué es UTN clothes?
-UTN CLOTHES es un proyecto académico, el cual simula una *página web e-commerce* de indumentaria. Permite a los usuarios navegar por un catálogo de productos y agregar estos mismos al carrito. 
+# ¿Qué es UTN clothing?
+UTN CLOTHING es un proyecto académico, el cual simula una *página web e-commerce* de indumentaria. Permite a los usuarios navegar por un catálogo de productos y agregar estos mismos al carrito. 
 
 ---------------
 # Características
@@ -53,6 +53,10 @@ UTN CLOTHES es un proyecto académico, el cual simula una *página web e-commerc
 
 ### ¿Cómo acceder a la página y a sus recursos?
 Para utilizar la página web, es necesario *clonar el repositorio* en su computadora. Posteriormente, accediendo a las carpetas correspondientes, podrá copiar los vinculos de las diferentes páginas para visualizarlos en un navegador(como Google Chrome).
+<details>
+  <summary>Ver más</summary>
+   *Si desea más información, vaya a "Preguntas frecuentes".*
+</details>
 
 ## Licencia
 *“Proyecto académico – sin fines comerciales”*
@@ -67,5 +71,6 @@ const proyecto = {
   ]
 }
 ```
+
 
 
