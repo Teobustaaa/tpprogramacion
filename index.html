@@ -19,82 +19,99 @@
 
   <!-- Header y Navegación -->
   <header>
-<nav class="navbar navbar-expand-lg navbar-dark navbar-dark-custom fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="./index.html">UTN CLOTHING</a>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-custom fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./index.html">UTN CLOTHING</a>
 
-    <!-- Botón hamburguesa -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <!-- Botón hamburguesa -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <!-- Menú -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pages/productos.html">Productos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pages/preguntas.html">Preguntas frecuentes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/pages/acercade.html">Contacto</a>
-        </li>
-          <li class="nav-item">
-          <button class="btn btn-sm btn-outline-light ms-2" id="darkModeToggle">🌙 Dark Mode</button>
-          </li>
-      </ul>
-    </div>
+        <!-- Menú y carrito dentro del colapsable -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/productos.html">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/preguntas.html">Preguntas frecuentes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/acercade.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-sm btn-outline-light ms-2" id="darkModeToggle">🌙 Dark Mode</button>
+            </li>
+          </ul>
 
-      <!-- Carrito con dropdown -->
-<ul class="navbar-nav">
-  <li class="nav-item dropdown">
-    <a class="nav-link position-relative dropdown-toggle" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="./assets/images/carrito.png" alt="">
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
-    </a>
+          <!-- Carrito a la derecha -->
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link position-relative dropdown-toggle" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="./assets/images/carrito.png" alt="">
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+              </a>
 
-    <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="cartDropdown" style="min-width: 300px;">
-      <div id="cart-items">
-        <p class="text-center m-0">Tu carrito está vacío</p>
+              <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="cartDropdown" style="min-width: 300px;">
+                <div id="cart-items">
+                  <p class="text-center m-0">Tu carrito está vacío</p>
+                </div>
+                <hr class="dropdown-divider">
+                <div id="cart-total" class="mb-2 text-end fw-bold"></div>
+                <button class="btn btn-primary w-100" id="checkout-btn">Finalizar compra</button>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-      <hr class="dropdown-divider">
-      <div id="cart-total" class="mb-2 text-end fw-bold"></div>
-      <button class="btn btn-primary w-100" id="checkout-btn">Finalizar compra</button>
-    </ul>
-  </li>
-</ul>
-</nav>
-
-</header>
+    </nav>
+  </header>
 
   <!-- Contenido principal -->
   <main>
     <!-- Carrusel -->
     <section>
-      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+      <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
+          <!-- Slide 1 -->
           <div class="carousel-item active">
-            <img src="./assets/images/UTNfotolaptop.jpg" class="d-block w-100" alt="Slide 1">
+            <picture>
+              <source media="(max-width: 480px)" srcset="assets/images/UTNfotocelular.jpg">
+              <source media="(max-width: 991px)" srcset="assets/images/UTNfototablet.jpg">
+              <source media="(max-width: 1199px)" srcset="assets/images/UTNfotolaptop.jpg">
+              <img src="assets/images/UTNfotopc.jpg" class="d-block w-100" alt="Banner 1">
+            </picture>
           </div>
+          <!-- Slide 2 -->
           <div class="carousel-item">
-            <img src="./assets/images/remeranegra.png" class="d-block w-100" alt="Slide 2">
+            <picture>
+              <source media="(max-width: 480px)" srcset="assets/images/UTNfoto2celular.jpg">
+              <source media="(max-width: 991px)" srcset="assets/images/UTNfoto2tablet.jpg">
+              <source media="(max-width: 1199px)" srcset="assets/images/UTNfoto2laptop.jpg">
+              <img src="assets/images/UTNfoto2pc.jpg" class="d-block w-100" alt="Banner 2">
+            </picture>
           </div>
+          <!-- Slide 3 -->
           <div class="carousel-item">
-            <img src="./assets/images/remeranegra.png" class="d-block w-100" alt="Slide 3">
+            <picture>
+              <source media="(max-width: 480px)" srcset="assets/images/UTNfoto3celular.jpg">
+              <source media="(max-width: 991px)" srcset="assets/images/UTNfoto3tablet.jpg">
+              <source media="(max-width: 1199px)" srcset="assets/images/UTNfoto3laptop.jpg">
+              <img src="assets/images/UTNfoto3pc.jpg" class="d-block w-100" alt="Banner 3">
+            </picture>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Anterior</span>
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Siguiente</span>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
         </button>
       </div>
     </section>
@@ -102,62 +119,52 @@
     <!-- Productos -->
     <section class="container my-5">
       <div class="row" id="contenedor">
-        <article class="col-md-4">
+        <article class="col-6 col-md-4">
           <div class="card">
             <a href="pages/remeranegra.html"><img src="./assets/images/remeranegra.png" class="card-img-top" alt="Remera negra"></a>
             <div class="card-body">
               <h4 class="card-title">Remera lisa negra</h4>
               <p class="card-text price">$10.000</p>
-
             </div>
           </div>
         </article>
-
-        <article class="col-md-4">
+        <article class="col-6 col-md-4">
           <div class="card">
-            <a href="pages/jeangris.html"><img src="./assets/images/jeangris.jpg" class="card-img-top" alt="Remera negra logo"></a>
+            <a href="pages/jeangris.html"><img src="./assets/images/jeangris.jpg" class="card-img-top" alt="Jean gris"></a>
             <div class="card-body">
               <h4 class="card-title">Jean baggy gris</h4>
               <p class="card-text price">$25.000</p>
-
             </div>
           </div>
         </article>
-
-        <article class="col-md-4">
+        <article class="col-6 col-md-4">
           <div class="card">
-            <a href="pages/bermudabaggy.html"><img src="./assets/images/bermudajean.png" class="card-img-top" alt="Remera negra logo"></a>
+            <a href="pages/bermudabaggy.html"><img src="./assets/images/bermudajean.png" class="card-img-top" alt="Bermuda celeste"></a>
             <div class="card-body">
               <h4 class="card-title">Bermuda celeste</h4>
               <p class="card-text price">$20.000</p>
-
             </div>
           </div>
         </article>
       </div>
     </section>
+    <a href="pages/productos.html"><h2 style="text-align: center; text-decoration: underline;">Ver más</h2></a>
   </main>
-<a href="pages/productos.html"><h2 style="text-align: center; text-decoration: underline;">Ver mas</h2></a>
-  
 
   <!-- Footer -->
   <footer class="bg-light text-center">
     <div class="container p-4">
-
       <!-- Redes sociales -->
       <section class="mb-4 redes">
         <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="https://www.facebook.com/" role="button">
           <img src="./assets/icons/facebook-fill.png" alt="Facebook">
         </a>
-
         <a class="btn btn-primary btn-floating m-1" style="background-color: #000000" href="https://x.com/home" role="button">
           <img src="./assets/icons/twitter-x-line.png" alt="Twitter/X">
         </a>
-
         <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="https://www.instagram.com/" role="button">
           <img src="./assets/icons/instagram-line.png" alt="Instagram">
         </a>
-
         <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="https://github.com/libiaMondino/proyecto" role="button">
           <img src="./assets/icons/github-fill (1).png" alt="GitHub">
         </a>
@@ -190,7 +197,6 @@
           commodi optio pariatur est quia magnam eum harum corrupti dicta, aliquam sequi voluptate quas.
         </p>
       </section>
-
     </div>
 
     <!-- Copyright -->
