@@ -6,6 +6,23 @@
     <title>Productos</title>
      <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        @keyframes girar{
+            from{transform: rotate(0deg);}
+            to{transform: rotate(360deg);}
+        }
+
+        .loader {
+            animation: girar 1s linear infinite;
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 50%;
+            border-top: grey;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
           <!-- Header y Navegación -->
@@ -55,8 +72,12 @@
         </ul>
       </li>
     </ul>
+    </div>
     </nav>
   </header>
+    
+    <div id="loader" class="loader"></div>
+            
   <section class="container my-5">
 
         <div class="row" id="contenedor">
@@ -157,7 +178,52 @@
 
         </div>
 
-  </section> 
+    </section> 
+
+    
+    <section class="my-4 text-center">
+      <input type="text" id="buscador" placeholder="Buscar producto...">
+      <div id="recomendados"></div>
+    </section>
+
+    <script>
+        const input = document.getElementById("buscador");
+        const recomendados = document.getElementById("recomendados");
+    
+        const productos = [
+            "Remera lisa negra",
+            "Remera lisa beige",
+            "Remera lisa blanca",
+            "Bermuda baggy",
+            "Remera baggy gris",
+            "Jean baggy gris"
+        ];
+    
+        input.addEventListener("input", () => {
+            const texto = input.value.toLowerCase();
+            recomendados.innerHTML = "";
+    
+            const filtrados = productos.filter(prod =>
+                prod.toLowerCase().includes(texto)
+            );
+    
+            filtrados.forEach(prod => {
+                const div = document.createElement("div");
+                div.textContent = prod;
+                div.classList.add("producto");
+                recomendados.appendChild(div);
+            });
+    
+            if(filtrados.length === 0 && texto !== "") {
+                recomendados.textContent = "No se encontraron resultados para la búsqueda.";
+            } 
+        });
+
+        window.addEventListener("load", () => {
+            const loader = document.getElementById("loader");
+            loader.style.display = "none";
+        });
+  </script>
 
   <footer class="bg-light text-center">
     <div class="container p-4">
