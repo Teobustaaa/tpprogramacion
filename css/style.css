@@ -135,8 +135,14 @@ background-color:black;
 }
 
 .size-productos{
-    padding: 50px;
+    padding: 100px;
    
+}
+
+.producto-img{
+
+    padding-top: 50px;
+
 }
 
 .info-productos{
@@ -173,6 +179,30 @@ background-color:black;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.preguntas{
+
+    padding-top: 50px;
+
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode .card {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+body.dark-mode .navbar {
+  background-color: #000 !important;
+}
+
+body.dark-mode footer {
+  background-color: #1e1e1e !important;
 }
 
 

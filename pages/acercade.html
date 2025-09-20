@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contacto</title>
      <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="website icon" type="png" href="/assets/icons/favicon-16x16.png">
 </head>
 <body>
          <!-- Header y Navegacion -->
@@ -23,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
+          <a class="nav-link" href="/index.html">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/pages/productos.html">Productos</a>
@@ -32,7 +33,10 @@
           <a class="nav-link" href="/pages/preguntas.html">Preguntas frecuentes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/pages/acercade.html">Acerca de</a>
+          <a class="nav-link active" aria-current="page" href="/pages/acercade.html">Contacto</a>
+        </li>
+                <li class="nav-item">
+          <button class="btn btn-sm btn-outline-light ms-2" id="darkModeToggle">🌙 Dark Mode</button>
         </li>
       </ul>
 
@@ -55,6 +59,164 @@
   </li>
 </ul>
 </nav>
+
+<main class="d-flex justify-content-center my-5">
+        <section class="container my-5">
+            <div class="card-custom">
+                <h3>Formulario de Contacto</h3>
+                <div class="card-body-custom">
+
+                <form id="formulario">
+
+                <div class="mb-3">
+                    <label for="nombreContacto" class="form-label">Nombre completo: </label>
+                    <input type="text" name="nombreContacto" id="nombreContacto" class="form-control" required>
+                    <span id="mensaje-nombre" class="error"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="mail" class="form-label">Email: </label>
+                    <input type="email" name="mail" id="mail" class="form-control" required>
+                    <span id="mensaje-email" class="error"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Numero de telefono: </label>
+                    <input type="tel" name="telefono" id="telefono" class="form-control" required>
+                    <span id="mensaje-telefono" class="error"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">Mensaje: </label>
+                    <textarea name="mensaje" id="mensaje" rows="5" class="form-control"></textarea>
+                    <span id="mensaje-mensaje" class="error"></span>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input type="checkbox" id="acepto" name="acepto" class="form-check-input" required>
+                    <label for="acepto" class="form-check-label">Acepto que me contacten</label>
+                    <span id="mensaje-check" class="error"></span>
+                </div>
+
+                <button type="submit" class="btn btn-dark">Enviar</button>
+            
+                </form>
+                </div>
+            </div>
+        </section>
+
+            <script>
+                const nombreInput = document.getElementById("nombreContacto");
+                const mensajeNombre = document.getElementById("mensaje-nombre");
+
+                nombreInput.addEventListener("input", () => {
+                        if(nombreInput.value.length < 5) {
+                            mensajeNombre.textContent = "El nombre debe tener al menos 5 letras";
+                            mensajeNombre.style.color = "red";
+                        } else {
+                            mensajeNombre.textContent = "Nombre validado.";
+                            mensajeNombre.style.color = "green";
+                        }
+                    }
+                );
+
+                const correoEmail = document.getElementById("mail");
+                const mensajeEmail = document.getElementById("mensaje-email");
+
+                correoEmail.addEventListener("input", () => {
+                    if(correoEmail.value.includes("@") && correoEmail.value.length >= 6) {
+                        mensajeEmail.textContent = "Email validado.";
+                        mensajeEmail.style.color = "green";
+                    } else {
+                        mensajeEmail.textContent = "El email debe contener @ y al menos 6 caracteres.";
+                        mensajeEmail.style.color = "red";
+                    }
+                });
+
+                const telefonoInput = document.getElementById("telefono");
+                const mensajeTelefono = document.getElementById("mensaje-telefono");
+
+                telefonoInput.addEventListener("input", () =>{
+                    if(telefonoInput.value.length < 6) {
+                        mensajeTelefono.textContent = "Numero de telefono invalido";
+                        mensajeTelefono.style.color = "red";
+                    } else {
+                        mensajeTelefono.textContent = "Numero de telefono valido";
+                        mensajeTelefono.style.color = "green";
+                    }
+
+                })
+
+                const mensajeInput = document.getElementById("mensaje");
+                const mensajeMensaje = document.getElementById("mensaje-mensaje");
+
+                mensajeInput.addEventListener("input", () =>{
+                    if(mensajeInput.value.trim().length < 5) {
+                        mensajeMensaje.textContent = "El mensaje debe contener mas de 5 caracteres";
+                        mensajeMensaje.style.color = "red";
+                    } else {
+                        mensajeMensaje.textContent = "Mensaje validado.";
+                        mensajeMensaje.style.color = "green";
+                    }
+                })
+
+                const checkInput = document.getElementById("acepto");
+                const checkMensaje = document.getElementById("mensaje-check");
+
+                checkInput.addEventListener("change", () => {
+                    if(checkInput.checked === false) {
+                        checkMensaje.textContent = "Debes aceptar que te contacten.";
+                        checkMensaje.style.color = "red";
+                    } else {
+                        checkMensaje.textContent = "Aceptado";
+                        checkMensaje.style.color = "green";
+                    }
+                } )
+
+
+                formulario.addEventListener("submit", async (e) => { //async: función que puede esperar cosas que tardan en completarse (submit con fetch)
+                    e.preventDefault(); //Evita que se recargue la pagina
+
+                    const datos = {
+                        nombre: nombreInput.value,
+                        email: correoEmail.value,
+                        telefono: telefonoInput.value,
+                        mensaje: mensajeInput.value
+                    };
+
+                    try { //si falla try, se capta el error con catch
+                        const res = await fetch("https://jsonplaceholder.typicode.com/posts", { //await: espera a que la API responda antes de continuar; se define una constante de respuesta donde se guarda la respuesta del servidor (si estan "bien" o "mal" los datos enviados)
+                            method: "POST", //enviamos datos al servidor (mock API)
+                            headers: { "Content-Type": "application/json" }, //los headers son informacion adicional para que el servidor pueda interpretar la informacion (enviamos info en formato json en este caso)
+                            body: JSON.stringify(datos) //el contenido que enviamos al servidor (datos en formato json)
+                        });
+
+                        const data = await res.json(); //await res.json lee el cuerpo de la respuesta (que viene en JSON) y lo convierte en un objeto js, para que data(objeto) pueda acceder a sus propiedades (data.nombre, data.email etc)
+                        alert("Formulario enviado: " + JSON.stringify(data)); //se pasa a data como string porque alert muestra texto, y se envia el formulario a un mock
+
+                    } catch (error) { //recibe la info sobre lo que salio mal 
+                        alert("Error al enviar: " + error);
+                    }
+                });
+            </script>
+
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <footer>
 <footer class="bg-light text-center ">
   
@@ -118,8 +280,9 @@
 
 </footer>
 </footer>
-
-<script src="/bootstrap/js/bootstrap.min.js"> </script>
-<script src="/js/cart.js"></script>
+  <script src="/js/darkmode.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/cart.js"></script>
 </body>
 </html>
