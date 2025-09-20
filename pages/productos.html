@@ -194,7 +194,7 @@
             recomendados.innerHTML = "";
     
             const filtrados = productos.filter(prod =>
-                prod.toLowerCase().includes(texto)
+                prod.nombre.toLowerCase().includes(texto)
             );
     
             filtrados.forEach(prod => {
