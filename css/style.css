@@ -42,13 +42,9 @@ padding-top: 170px;
 }
 
 .producto {
-    cursor: pointer;
     padding: 5px;
 }
 
-.producto:hover {
-    background-color: #f0f0f0; /* opcional, para que se note al pasar */
-}
 
 .container-items{
     display: grid;
@@ -145,13 +141,10 @@ background-color:black;
 
 .size-productos{
     padding: 100px;
-   
 }
 
 .producto-img{
-
     padding-top: 50px;
-
 }
 
 .info-productos{
@@ -192,9 +185,7 @@ background-color:black;
 }
 
 .preguntas{
-
     padding-top: 50px;
-
 }
 
 body.dark-mode {
