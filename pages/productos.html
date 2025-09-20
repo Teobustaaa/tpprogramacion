@@ -191,12 +191,12 @@
         const recomendados = document.getElementById("recomendados");
     
         const productos = [
-            "Remera lisa negra",
-            "Remera lisa beige",
-            "Remera lisa blanca",
-            "Bermuda baggy",
-            "Remera baggy gris",
-            "Jean baggy gris"
+            { nombre: "Remera lisa negra", url: "remeranegra.html" },
+            { nombre: "Remera lisa beige", url: "remerabeige.html" },
+            { nombre: "Remera lisa blanca", url: "remerablanca.html" },
+            { nombre: "Bermuda baggy", url: "bermudabaggy.html" },
+            { nombre: "Remera baggy gris", url: "remeragray.html" },
+            { nombre: "Jean baggy gris", url: "jeangris.html" }
         ];
     
         input.addEventListener("input", () => {
@@ -209,8 +209,13 @@
     
             filtrados.forEach(prod => {
                 const div = document.createElement("div");
-                div.textContent = prod;
+                div.textContent = prod.nombre;
                 div.classList.add("producto");
+
+                 div.addEventListener("click", () => {
+                    window.location.href = prod.url;
+                });
+                
                 recomendados.appendChild(div);
             });
     
