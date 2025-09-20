@@ -191,12 +191,15 @@
         const recomendados = document.getElementById("recomendados");
     
         const productos = [
-            { nombre: "Remera lisa negra", url: "remeranegra.html" },
-            { nombre: "Remera lisa beige", url: "remerabeige.html" },
-            { nombre: "Remera lisa blanca", url: "remerablanca.html" },
-            { nombre: "Bermuda baggy", url: "bermudabaggy.html" },
-            { nombre: "Remera baggy gris", url: "remeragray.html" },
-            { nombre: "Jean baggy gris", url: "jeangris.html" }
+            { nombre: "Remera lisa negra", link: "remeranegra.html" },
+            { nombre: "Remera lisa beige", link: "remerabeige.html" },
+            { nombre: "Remera lisa blanca", link: "remerablanca.html" },
+            { nombre: "Bermuda baggy", link: "bermudabaggy.html" },
+            { nombre: "Bermuda gris baggy", link: "bermudabaggygris.html" },
+            { nombre: "Jean baggy gris", link: "jeangris.html" },
+            { nombre: "Buzo negro", link: "buzonegro.html" },
+            { nombre: "Buzo marrón", link: "buzomarron.html" },
+            { nombre: "Buzo blanco", link: "buzoblanco.html" }
         ];
     
         input.addEventListener("input", () => {
@@ -213,7 +216,7 @@
                 div.classList.add("producto");
 
                  div.addEventListener("click", () => {
-                    window.location.href = prod.url;
+                    window.location.href = prod.link;
                 });
                 
                 recomendados.appendChild(div);
