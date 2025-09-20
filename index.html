@@ -116,6 +116,12 @@
       </div>
     </section>
 
+    <!-- Buscador -->
+    <section class="my-4 text-center">
+      <input type="text" id="buscador" placeholder="Buscar producto...">
+      <div id="recomendados"></div>
+    </section>
+
     <!-- Productos -->
     <section class="container my-5">
       <div class="row" id="contenedor">
@@ -211,5 +217,52 @@
   <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/js/cart.js"></script>
   <script src="/js/loader.js"></script>
+
+  <script>
+    const input = document.getElementById("buscador");
+    const recomendados = document.getElementById("recomendados");
+
+    const productos = [
+        { nombre: "Remera lisa negra", link: "pages/remeranegra.html" },
+        { nombre: "Remera lisa beige", link: "pages/remerabeige.html" },
+        { nombre: "Remera lisa blanca", link: "pages/remerablanca.html" },
+        { nombre: "Bermuda celeste", link: "pages/bermudabaggy.html" },
+        { nombre: "Bermuda gris", link: "pages/bermudabaggygris.html" },
+        { nombre: "Jean baggy gris", link: "pages/jeangris.html" },
+        { nombre: "Buzo negro", link: "pages/buzonegro.html" },
+        { nombre: "Buzo marrón", link: "pages/buzomarron.html" },
+        { nombre: "Buzo blanco", link: "pages/buzoblanco.html" }
+    ];
+
+    input.addEventListener("input", () => {
+    const texto = input.value.toLowerCase();
+    recomendados.innerHTML = "";
+
+    const filtrados = productos.filter(prod =>
+        prod.nombre.toLowerCase().includes(texto)
+    );
+
+    filtrados.forEach(prod => {
+        const div = document.createElement("div");
+        div.textContent = prod.nombre;
+        div.classList.add("producto", "btn", "btn-sm", "d-block", "mb-2", "mx-auto");
+        div.style.width = "200px";
+
+        div.addEventListener("click", () => {
+            window.location.href = prod.link;
+        });
+
+        recomendados.appendChild(div);
+    });
+
+    if(filtrados.length === 0 && texto !== "") {
+        const mensaje = document.createElement("div");
+        mensaje.textContent = "No se encontraron resultados para la búsqueda.";
+        mensaje.classList.add("text-center", "text-muted");
+        recomendados.appendChild(mensaje);
+    } 
+});
+
+  </script>
 </body>
 </html>
