@@ -41,6 +41,15 @@ padding-top: 170px;
     background-color: rgb(29, 27, 27) !important;
 }
 
+.producto {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.producto:hover {
+    background-color: #f0f0f0; /* opcional, para que se note al pasar */
+}
+
 .container-items{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
