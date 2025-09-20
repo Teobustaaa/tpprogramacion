@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
 
-    <link rel="icon" type="image/png" href="favicon/favicon-96x96" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-    <link rel="shortcut icon" href="favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="../favicon/favicon-96x96" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
 
-    <meta name="apple-mobile-web-app-title" content="miTienda" />
+    <meta name="apple-mobile-web-app-title" content="UTN Clothing" />
 
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    
     <style>
         @keyframes agrandarImagen {
             from {transform: scale(1);}
@@ -57,69 +60,78 @@
 
 <body>
     <header>
-        <nav>
-             <a href="index.html">
-                <img 
-                src="/assets/images/4GFYMYJE5ZDWXGOEOYWI7XSIAQ.avif"
-                width="42" height="42"
-                alt="Logo"
-                >
-            </a>
-            <a href="index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="contactos.html">Contacto</a>
-            <a href="/pages/registro.html">Registrarse</a>
-            <!--Ejemplo de imagen que redirecciona a la pagina carrito-->
-            <a href="/pages/carrito.html">
-                <img
-                    src="/assets/images/carrito.png"
-                    width="42" height="42" 
-                    alt="Carrito" 
-                >   
-            </a>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-custom">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">UTN CLOTHING</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active" href="./productos.html">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="./preguntas.html">Preguntas frecuentes</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="./formularioFinal.html">Contáctanos</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                    <a class="nav-link position-relative dropdown-toggle" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../assets/images/carrito.png" alt="">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="cartDropdown" style="min-width: 300px;">
+                        <div id="cart-items">
+                        <p class="text-center m-0">Tu carrito está vacío</p>
+                        </div>
+                        <hr class="dropdown-divider">
+                        <div id="cart-total" class="mb-2 text-end fw-bold"></div>
+                        <button class="btn btn-primary w-100" id="checkout-btn">Finalizar compra</button>
+                    </ul>
+                    </li>
+                </ul>
+
+                </div>
+            </div>
         </nav>
     </header>
 
-    <aside>
+    <div class="loader"></div>
 
-    </aside>
+    <main class="container my-5">
+    <!-- Grid de productos -->
+    <section class="productos-grid text-center">
+      <article class="productos">
+        <img src="../assets/images/remeranegra.png" alt="Remera lisa negra">
+        <p>Remera lisa negra - $10.000</p>
+      </article>
+      <article class="productos">
+        <img src="../assets/images/jeangris.jpg" alt="Jean baggy gris">
+        <p>Jean baggy gris - $25.000</p>
+      </article>
+      <article class="productos">
+        <img src="../assets/images/bermudajean.png" alt="Bermuda celeste">
+        <p>Bermuda celeste - $20.000</p>
+      </article>
+    </section>
 
-    <main>
-        <div class="loader"></div>
+    <!-- Buscador -->
+    <section class="my-4 text-center">
+      <input type="text" id="buscador" placeholder="Buscar producto...">
+      <div id="recomendados"></div>
+    </section>
 
-        <section class="productos-grid">
-            <article class="productos">
-                <img src="imagenes/descargar - 2025-09-16T002243.827.jpeg" alt="Campera de jean">
-            </article>
-
-            <article class="productos">
-                
-            </article>
-
-            <article class="productos">
-                
-            </article>
-
-            <article class="productos">
-                
-            </article>
-
-            <article class="productos">
-                
-            </article>
-
-            <article class="productos">
-                
-            </article>
-        </section>
-
-        <section>
-            <input type="text" id="buscador" placeholder="Buscar producto...">
-
-            <div id="recomendados"></div>
-        </section>
-
-        <script>
+    <script>
             const input = document.getElementById("buscador");
             const recomendados = document.getElementById("recomendados");
 
@@ -151,12 +163,16 @@
                     recomendados.textContent = "No se encontraron resultados para la busqueda.";
                 } 
             })
-        </script>
+    </script>
     </main>
 
-    <footer>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/cart.js"></script>
 
+    <footer class="bg-light text-center p-4">
+        <p>&copy; 2025 UTN CLOTHING</p>
     </footer>
+
 </body>
 
 </html>
