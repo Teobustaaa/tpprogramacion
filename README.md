@@ -17,11 +17,7 @@ UTN CLOTHING es un proyecto académico, el cual simula una *página web e-commer
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 > [!IMPORTANT]
-> *Funcionalidades y extras agregados:* 
-> -Carrito con menú desplegable(dropdown).
-> -Dark mode
-> -Micro-interacciones
-> -Loaders 
+> *Funcionalidades y extras agregados:* Carrito con menú desplegable(dropdown), dark mode, micro-interacciones, loaders 
 
 ## Detalles de uso
 ### Cómo agregar productos al carrito y efectuar una compra
