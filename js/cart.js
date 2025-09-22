@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const addToCartButtons = document.querySelectorAll(".anadir-carrito");
   const checkoutBtn = document.getElementById("checkout-btn");
 
-  // Cargar carrito desde localStorage si existe
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   actualizarCarrito();
@@ -14,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
       const productCard = btn.closest(".producto");
 
-      // Validar cantidad
       const inputCantidad = productCard.querySelector(".input-cantidad");
       const qty = parseInt(inputCantidad.value);
       if (!qty || qty < 1) {
@@ -22,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Validar talle
       const selectTalle = productCard.querySelector("select[name='talle']");
       const talle = selectTalle.value;
       if (!talle) {
@@ -46,12 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
       guardarCarrito();
       actualizarCarrito();
 
-      // Limpiar cantidad
       inputCantidad.value = "";
     });
   });
 
-  // Botón finalizar compra
+
   checkoutBtn.addEventListener("click", () => {
     if (cart.length === 0) {
       alert("Tu carrito está vacío.");
@@ -92,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       cartItems.appendChild(li);
 
-      // Botón eliminar
+
       li.querySelector("button").addEventListener("click", (e) => {
         const idx = parseInt(e.target.dataset.index);
         cart.splice(idx, 1);
