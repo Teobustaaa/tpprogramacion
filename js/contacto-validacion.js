@@ -1,84 +1,93 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("formulario");
+const nombreInput = document.getElementById("nombreContacto");
+                const mensajeNombre = document.getElementById("mensaje-nombre");
 
-    const nombre = document.getElementById("nombreContacto");
-    const email = document.getElementById("mail");
-    const telefono = document.getElementById("telefono");
-    const check = document.getElementById("acepto");
+                nombreInput.addEventListener("input", () => {
+                        if(nombreInput.value.length < 5) {
+                            mensajeNombre.textContent = "El nombre debe tener al menos 5 letras";
+                            mensajeNombre.style.color = "red";
+                        } else {
+                            mensajeNombre.textContent = "Nombre validado.";
+                            mensajeNombre.style.color = "green";
+                        }
+                    }
+                );
 
-    const mensajeNombre = document.getElementById("mensaje-nombre");
-    const mensajeEmail = document.getElementById("mensaje-email");
-    const mensajeTelefono = document.getElementById("mensaje-telefono");
-    const mensajeCheck = document.getElementById("mensaje-check");
+                const correoEmail = document.getElementById("mail");
+                const mensajeEmail = document.getElementById("mensaje-email");
 
-    function validarNombre() {
-        if (nombre.value.trim().length < 3) {
-            mensajeNombre.textContent = "El nombre debe tener al menos 3 caracteres";
-            nombre.classList.add("is-invalid");
-            nombre.classList.remove("is-valid");
-            return false;
-        }
-        mensajeNombre.textContent = "";
-        nombre.classList.add("is-valid");
-        nombre.classList.remove("is-invalid");
-        return true;
-    }
+                correoEmail.addEventListener("input", () => {
+                    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!regexEmail.test(correoEmail.value)) {
+                        mensajeEmail.textContent = "Email validado.";
+                        mensajeEmail.style.color = "green";
+                    } else {
+                        mensajeEmail.textContent = "El email debe contener @ y al menos 6 caracteres.";
+                        mensajeEmail.style.color = "red";
+                    }
+                });
 
-    function validarEmail() {
-        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!regexEmail.test(email.value)) {
-            mensajeEmail.textContent = "El email no es válido";
-            email.classList.add("is-invalid");
-            email.classList.remove("is-valid");
-            return false;
-        }
-        mensajeEmail.textContent = "";
-        email.classList.add("is-valid");
-        email.classList.remove("is-invalid");
-        return true;
-    }
+                const telefonoInput = document.getElementById("telefono");
+                const mensajeTelefono = document.getElementById("mensaje-telefono");
 
-    function validarTelefono() {
-        if (!/^\d{8,15}$/.test(telefono.value)) {
-            mensajeTelefono.textContent = "Debe contener entre 8 y 15 números";
-            telefono.classList.add("is-invalid");
-            telefono.classList.remove("is-valid");
-            return false;
-        }
-        mensajeTelefono.textContent = "";
-        telefono.classList.add("is-valid");
-        telefono.classList.remove("is-invalid");
-        return true;
-    }
+                telefonoInput.addEventListener("input", () =>{
+                    if(telefonoInput.value.length < 6) {
+                        mensajeTelefono.textContent = "Numero de telefono invalido";
+                        mensajeTelefono.style.color = "red";
+                    } else {
+                        mensajeTelefono.textContent = "Numero de telefono valido";
+                        mensajeTelefono.style.color = "green";
+                    }
 
-    function validarCheck() {
-        if (!check.checked) {
-            mensajeCheck.textContent = "Debes aceptar que te contacten";
-            check.classList.add("is-invalid");
-            check.classList.remove("is-valid");
-            return false;
-        }
-        mensajeCheck.textContent = "";
-        check.classList.add("is-valid");
-        check.classList.remove("is-invalid");
-        return true;
-    }
+                })
 
-    nombre.addEventListener("input", validarNombre);
-    email.addEventListener("input", validarEmail);
-    telefono.addEventListener("input", validarTelefono);
-    check.addEventListener("change", validarCheck);
+                const mensajeInput = document.getElementById("mensaje");
+                const mensajeMensaje = document.getElementById("mensaje-mensaje");
 
-    form.addEventListener("submit", function (e) {
-        let valido = true;
+                mensajeInput.addEventListener("input", () =>{
+                    if(mensajeInput.value.trim().length < 5) {
+                        mensajeMensaje.textContent = "El mensaje debe contener mas de 5 caracteres";
+                        mensajeMensaje.style.color = "red";
+                    } else {
+                        mensajeMensaje.textContent = "Mensaje validado.";
+                        mensajeMensaje.style.color = "green";
+                    }
+                })
 
-        if (!validarNombre()) valido = false;
-        if (!validarEmail()) valido = false;
-        if (!validarTelefono()) valido = false;
-        if (!validarCheck()) valido = false;
+                const checkInput = document.getElementById("acepto");
+                const checkMensaje = document.getElementById("mensaje-check");
 
-        if (!valido) {
-            e.preventDefault();
-        }
-    });
-});
+                checkInput.addEventListener("change", () => {
+                    if(checkInput.checked === false) {
+                        checkMensaje.textContent = "Debes aceptar que te contacten.";
+                        checkMensaje.style.color = "red";
+                    } else {
+                        checkMensaje.textContent = "Aceptado";
+                        checkMensaje.style.color = "green";
+                    }
+                } )
+
+
+                formulario.addEventListener("submit", async (e) => { //async: función que puede esperar cosas que tardan en completarse (submit con fetch)
+                    e.preventDefault(); //Evita que se recargue la pagina
+
+                    const datos = {
+                        nombre: nombreInput.value,
+                        email: correoEmail.value,
+                        telefono: telefonoInput.value,
+                        mensaje: mensajeInput.value
+                    };
+
+                    try { //si falla try, se capta el error con catch
+                        const res = await fetch("https://jsonplaceholder.typicode.com/posts", { //await: espera a que la API responda antes de continuar; se define una constante de respuesta donde se guarda la respuesta del servidor (si estan "bien" o "mal" los datos enviados)
+                            method: "POST", //enviamos datos al servidor (mock API)
+                            headers: { "Content-Type": "application/json" }, //los headers son informacion adicional para que el servidor pueda interpretar la informacion (enviamos info en formato json en este caso)
+                            body: JSON.stringify(datos) //el contenido que enviamos al servidor (datos en formato json)
+                        });
+
+                        const data = await res.json(); //await res.json lee el cuerpo de la respuesta (que viene en JSON) y lo convierte en un objeto js, para que data(objeto) pueda acceder a sus propiedades (data.nombre, data.email etc)
+                        alert("Formulario enviado: " + JSON.stringify(data)); //se pasa a data como string porque alert muestra texto, y se envia el formulario a un mock
+
+                    } catch (error) { //recibe la info sobre lo que salio mal 
+                        alert("Error al enviar: " + error);
+                    }
+                });
