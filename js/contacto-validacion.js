@@ -16,16 +16,17 @@ const nombreInput = document.getElementById("nombreContacto");
                 const mensajeEmail = document.getElementById("mensaje-email");
 
                 correoEmail.addEventListener("input", () => {
-                  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-              
-                  if (!regexEmail.test(correoEmail.value) || correoEmail.value.length < 6) {
-                      mensajeEmail.textContent = "El email debe contener @ y al menos 6 caracteres.";
-                      mensajeEmail.style.color = "red";
-                  } else {
-                      mensajeEmail.textContent = "Email validado.";
-                      mensajeEmail.style.color = "green";
-                  }
-              });
+                    const valor = correoEmail.value.trim();
+  
+                    if (valor.length < 6 || !valor.includes("@")) {
+                        mensajeEmail.textContent = "El email debe contener @ y al menos 6 caracteres.";
+                        mensajeEmail.style.color = "red";
+                    } else {
+                        mensajeEmail.textContent = "Email validado.";
+                        mensajeEmail.style.color = "green";
+                    }
+                });
+
                 const telefonoInput = document.getElementById("telefono");
                 const mensajeTelefono = document.getElementById("mensaje-telefono");
 
