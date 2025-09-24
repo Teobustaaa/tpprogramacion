@@ -18,11 +18,11 @@ const nombreInput = document.getElementById("nombreContacto");
                 correoEmail.addEventListener("input", () => {
                     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (!regexEmail.test(correoEmail.value)) {
-                        mensajeEmail.textContent = "Email validado.";
-                        mensajeEmail.style.color = "green";
-                    } else {
                         mensajeEmail.textContent = "El email debe contener @ y al menos 6 caracteres.";
                         mensajeEmail.style.color = "red";
+                    } else {
+                        mensajeEmail.textContent = "Email validado.";
+                        mensajeEmail.style.color = "green";
                     }
                 });
 
